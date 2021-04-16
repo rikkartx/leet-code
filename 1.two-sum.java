@@ -24,11 +24,3 @@ class Solution {
     }
 }
 // @lc code=end
-
-class Test {
-    public static void main(String[] args) {
-        int[] result = new Solution().twoSum(new int[]{2,7,11,15}, 9);
-        System.out.println(result[0]);
-        System.out.println(result[1]);
-    }
-}

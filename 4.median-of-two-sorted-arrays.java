@@ -49,10 +49,3 @@ class Solution {
     }
 }
 // @lc code=end
-
-class Test {
-    public static void main(String[] args) {
-        System.out.println(new Solution().findMedianSortedArrays(
-            new int[]{1,3,5,7,9}, new int[]{2,4,6,8,10}));
-    }
-}
