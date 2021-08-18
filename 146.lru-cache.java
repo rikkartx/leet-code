@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-import java.util.Hashtable;
+import java.util.HashMap;
 class LRUCache {
 
     class Node {
@@ -31,11 +31,11 @@ class LRUCache {
 
     private final Node tail = new Node();
 
-    private final Hashtable<Integer,Node> tab;
+    private final HashMap<Integer,Node> tab;
 
     public LRUCache(int capacity) {
         this.cap = capacity;
-        this.tab = new Hashtable<>(capacity);
+        this.tab = new HashMap<>(capacity);
         head.next = tail;
         tail.prev = head;
     }
