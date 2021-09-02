@@ -17,6 +17,10 @@
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
+        return reverseKGroupWithoutCache(head, k);
+    }
+
+    public ListNode reverseKGroupUsingCache(ListNode head, int k) {
         if(head == null || head.next == null || k <= 1) {
             return head;
         }
@@ -43,6 +47,47 @@ class Solution {
             }
         }
         return dummy.next;
+    }
+
+    public ListNode reverseKGroupWithoutCache(ListNode head, int k) {
+        if(head == null || head.next == null || k <= 1) {
+            return head;
+        }
+        ListNode dummy = new ListNode();
+        int n = 0;
+        ListNode node = head;
+        ListNode subListHead = head;
+        ListNode prev = null;
+        while (node != null) {
+            n++;
+            node = node.next;
+            if(n == k) {
+                ListNode reversed = reverse(subListHead, node, k);
+                if(dummy.next == null) {
+                    dummy.next = reversed;
+                }
+                if(prev != null) {
+                    prev.next = reversed;
+                }
+                prev = subListHead;
+                subListHead = subListHead.next;
+                n = 0;
+            }
+        }
+        return dummy.next;
+    }
+
+    private ListNode reverse(ListNode head, ListNode tailNext, int k) {
+        ListNode prev = null;
+        int count = k;
+        while(count > 0) {
+            ListNode next = head.next;
+            head.next = count == k ? tailNext : prev;
+            prev = head;
+            head = next;
+            count--;
+        }
+        return prev;
     }
 }
 // @lc code=end
